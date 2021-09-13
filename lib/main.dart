@@ -84,7 +84,6 @@ class _MyAppState extends State<MyApp> {
         child: ElevatedButton(
           onPressed: () {
             _Calc(num);
-            print(num);
           },
           child: Text(
             num,
