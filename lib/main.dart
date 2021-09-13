@@ -16,6 +16,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    var current;
     Widget Numbutton(var num, [var color = Colors.black, var text]) {
       return Container(
         decoration: BoxDecoration(boxShadow: [
@@ -33,7 +34,9 @@ class _MyAppState extends State<MyApp> {
           )
         ], shape: BoxShape.circle),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Calc(num);
+          },
           child: Text(
             num,
             style: TextStyle(
@@ -50,7 +53,9 @@ class _MyAppState extends State<MyApp> {
 
     Widget OpButton(var text) {
       return ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Calc(text);
+        },
         child: Text(
           text,
           style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
@@ -72,12 +77,25 @@ class _MyAppState extends State<MyApp> {
             Column(
               children: <Widget>[
                 SizedBox(
-                  height: 200,
+                  height: 220,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      '123*123',
+                      style: TextStyle(
+                        color: Colors.grey.shade500,
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    Text('123*123'),
                     Text(
                       '123',
                       style:
@@ -163,4 +181,12 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
+}
+
+Calc(var text) {
+  print(text);
+}
+
+setCurrent(var curr) {
+  return curr;
 }
