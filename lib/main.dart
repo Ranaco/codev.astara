@@ -14,23 +14,26 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  var init = '0';
+  var res = '';
+  var operationToPerform = '0';
+  var firstNum = 0;
+  var secondNum = 0;
+  var history = '0';
+
   @override
   Widget build(BuildContext context) {
-    String init = '0';
-    var res = '';
-    var operationToPerform = '0';
-    var firstNum = 0;
-    var secondNum = 0;
-
     _Calc(var got) {
       if (got == 'AC') {
         init = '0';
         res = '0';
         firstNum = 0;
+        history = '0';
         operationToPerform = '0';
         secondNum = 0;
       } else if (got == 'C') {
         firstNum = 0;
+        res = '0';
         secondNum = 0;
       } else if (got == '+' ||
           got == '-' ||
@@ -38,6 +41,7 @@ class _MyAppState extends State<MyApp> {
           got == '*' ||
           got == '%') {
         firstNum = int.parse(init);
+        firstNum = int.parse(history);
         res = '';
         operationToPerform = got;
       } else if (got == '=') {
@@ -131,7 +135,7 @@ class _MyAppState extends State<MyApp> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      init,
+                      history,
                       style: TextStyle(
                         color: Colors.grey.shade500,
                       ),
