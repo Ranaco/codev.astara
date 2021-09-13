@@ -17,8 +17,8 @@ class _MyAppState extends State<MyApp> {
   var init = '';
   var res = '';
   var operationToPerform = '0';
-  int firstNum = 0;
-  int secondNum = 0;
+  var firstNum = 0;
+  var secondNum = 0;
   var history = '0';
   _Calc(var got) {
     if (got == 'AC') {
@@ -75,7 +75,6 @@ class _MyAppState extends State<MyApp> {
     }
     setState(() {
       init = res;
-      history;
     });
   }
 
