@@ -14,60 +14,73 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var init = '0';
+  var init = '';
   var res = '';
   var operationToPerform = '0';
-  var firstNum = 0;
-  var secondNum = 0;
+  int firstNum = 0;
+  int secondNum = 0;
   var history = '0';
+  _Calc(var got) {
+    if (got == 'AC') {
+      init = '0';
+      res = '0';
+      firstNum = 0;
+      history = '0';
+      operationToPerform = '0';
+      secondNum = 0;
+    } else if (got == 'C') {
+      firstNum = 0;
+      res = '0';
+      secondNum = 0;
+    } else if (got == '+' ||
+        got == '-' ||
+        got == '/' ||
+        got == '*' ||
+        got == '%') {
+      firstNum = int.parse(init);
+      res = '';
+      operationToPerform = got;
+    } else if (got == '=') {
+      secondNum = int.parse(init);
+
+      if (operationToPerform == '+') {
+        res = (firstNum + secondNum).toString();
+        history =
+            firstNum.toString() + operationToPerform + secondNum.toString();
+      }
+      if (operationToPerform == '-') {
+        res = (firstNum - secondNum).toString();
+        history =
+            firstNum.toString() + operationToPerform + secondNum.toString();
+      }
+      if (operationToPerform == '*') {
+        res = (firstNum * secondNum).toString();
+        history =
+            firstNum.toString() + operationToPerform + secondNum.toString();
+      }
+      if (operationToPerform == '/') {
+        res = (firstNum / secondNum).toString();
+        history =
+            firstNum.toString() + operationToPerform + secondNum.toString();
+      }
+      if (operationToPerform == '%') {
+        res = ((firstNum / secondNum) * 100).toString();
+        history =
+            firstNum.toString() + operationToPerform + secondNum.toString();
+      }
+    } else if (got == '<') {
+      res = init.substring(0, init.length - 1);
+    } else {
+      res = int.parse(init + got).toString();
+    }
+    setState(() {
+      init = res;
+      history;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    _Calc(var got) {
-      if (got == 'AC') {
-        init = '0';
-        res = '0';
-        firstNum = 0;
-        history = '0';
-        operationToPerform = '0';
-        secondNum = 0;
-      } else if (got == 'C') {
-        firstNum = 0;
-        res = '0';
-        secondNum = 0;
-      } else if (got == '+' ||
-          got == '-' ||
-          got == '/' ||
-          got == '*' ||
-          got == '%') {
-        firstNum = int.parse(init);
-        res = '';
-        operationToPerform = got;
-      } else if (got == '=') {
-        secondNum = int.parse(init);
-        if (operationToPerform == '+') {
-          res = (firstNum + secondNum).toString();
-        }
-        if (operationToPerform == '-') {
-          res = (firstNum - secondNum).toString();
-        }
-        if (operationToPerform == '*') {
-          res = (firstNum * secondNum).toString();
-        }
-        if (operationToPerform == '/') {
-          res = (firstNum / secondNum).toString();
-        }
-        if (operationToPerform == '%') {
-          res = ((firstNum / secondNum) * 100).toString();
-        }
-      } else {
-        res = int.parse(init + got).toString();
-      }
-      setState(() {
-        init = res;
-      });
-    }
-
     Widget Numbutton(var num, [var color = Colors.black, var text]) {
       return Container(
         decoration: BoxDecoration(boxShadow: [
