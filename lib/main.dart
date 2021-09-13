@@ -41,7 +41,6 @@ class _MyAppState extends State<MyApp> {
           got == '*' ||
           got == '%') {
         firstNum = int.parse(init);
-        firstNum = int.parse(history);
         res = '';
         operationToPerform = got;
       } else if (got == '=') {
