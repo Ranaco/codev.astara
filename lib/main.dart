@@ -16,7 +16,55 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    var current;
+    String init = '0';
+    var res = '';
+    var operationToPerform = '0';
+    var firstNum = 0;
+    var secondNum = 0;
+
+    _Calc(var got) {
+      if (got == 'AC') {
+        init = '0';
+        res = '0';
+        firstNum = 0;
+        operationToPerform = '0';
+        secondNum = 0;
+      } else if (got == 'C') {
+        firstNum = 0;
+        secondNum = 0;
+      } else if (got == '+' ||
+          got == '-' ||
+          got == '/' ||
+          got == '*' ||
+          got == '%') {
+        firstNum = int.parse(init);
+        res = '';
+        operationToPerform = got;
+      } else if (got == '=') {
+        secondNum = int.parse(init);
+        if (operationToPerform == '+') {
+          res = (firstNum + secondNum).toString();
+        }
+        if (operationToPerform == '-') {
+          res = (firstNum - secondNum).toString();
+        }
+        if (operationToPerform == '*') {
+          res = (firstNum * secondNum).toString();
+        }
+        if (operationToPerform == '/') {
+          res = (firstNum / secondNum).toString();
+        }
+        if (operationToPerform == '%') {
+          res = ((firstNum / secondNum) * 100).toString();
+        }
+      } else {
+        res = int.parse(init + got).toString();
+      }
+      setState(() {
+        init = res;
+      });
+    }
+
     Widget Numbutton(var num, [var color = Colors.black, var text]) {
       return Container(
         decoration: BoxDecoration(boxShadow: [
@@ -35,7 +83,8 @@ class _MyAppState extends State<MyApp> {
         ], shape: BoxShape.circle),
         child: ElevatedButton(
           onPressed: () {
-            Calc(num);
+            _Calc(num);
+            print(num);
           },
           child: Text(
             num,
@@ -54,7 +103,7 @@ class _MyAppState extends State<MyApp> {
     Widget OpButton(var text) {
       return ElevatedButton(
         onPressed: () {
-          Calc(text);
+          _Calc(text);
         },
         child: Text(
           text,
@@ -83,7 +132,7 @@ class _MyAppState extends State<MyApp> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      '123*123',
+                      init,
                       style: TextStyle(
                         color: Colors.grey.shade500,
                       ),
@@ -97,7 +146,7 @@ class _MyAppState extends State<MyApp> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Text(
-                      '123',
+                      init,
                       style:
                           TextStyle(color: Colors.grey.shade400, fontSize: 50),
                     ),
@@ -111,8 +160,7 @@ class _MyAppState extends State<MyApp> {
                   children: <Widget>[
                     OpButton('AC'),
                     OpButton('C'),
-                    Numbutton(
-                        '+/-', Colors.grey.shade300, Colors.grey.shade900),
+                    Numbutton('<', Colors.grey.shade300, Colors.grey.shade900),
                     Numbutton('%', Colors.grey.shade300, Colors.grey.shade900),
                   ],
                 ),
@@ -173,7 +221,9 @@ class _MyAppState extends State<MyApp> {
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            _Calc('=');
+          },
           child: Icon(Icons.arrow_forward_ios_rounded),
           backgroundColor: Colors.grey.shade900,
         ),
@@ -181,12 +231,4 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
-}
-
-Calc(var text) {
-  print(text);
-}
-
-setCurrent(var curr) {
-  return curr;
 }
