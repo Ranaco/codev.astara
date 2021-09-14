@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp(home: const MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -226,7 +226,38 @@ class _MyAppState extends State<MyApp> {
                     children: <Widget>[
                       Numbutton('00'),
                       Numbutton('0'),
-                      Numbutton('.'),
+                      Container(
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade900,
+                            offset: Offset(2, 2),
+                            blurRadius: 15,
+                            spreadRadius: 1,
+                          ),
+                          BoxShadow(
+                            color: Colors.grey.shade900,
+                            offset: Offset(2, 2),
+                            blurRadius: 15,
+                            spreadRadius: 1,
+                          ),
+                        ], shape: BoxShape.circle),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => development()));
+                          },
+                          child: Text(
+                            '.',
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            shape: CircleBorder(),
+                            primary: Colors.black,
+                            fixedSize: Size(40, 40),
+                          ),
+                        ),
+                      ),
                       Numbutton(
                           '/', Colors.grey.shade300, Colors.grey.shade900),
                     ])
@@ -242,6 +273,19 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: Colors.grey.shade900,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      ),
+    );
+  }
+}
+
+class development extends StatelessWidget {
+  const development({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('development'),
       ),
     );
   }
