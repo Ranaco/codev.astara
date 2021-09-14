@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: const MyApp()));
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: const MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -129,151 +129,144 @@ class _MyAppState extends State<MyApp> {
       );
     }
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.black,
-        body: Wrap(
-          direction: Axis.horizontal,
-          alignment: WrapAlignment.spaceEvenly,
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 220,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      history,
-                      style: TextStyle(
-                        color: Colors.grey.shade500,
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Text(
-                      init,
-                      style:
-                          TextStyle(color: Colors.grey.shade400, fontSize: 50),
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Wrap(
+        direction: Axis.horizontal,
+        alignment: WrapAlignment.spaceEvenly,
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              SizedBox(
+                height: 180,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    history,
+                    style: TextStyle(
+                      color: Colors.grey.shade500,
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Row(
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    init,
+                    style: TextStyle(color: Colors.grey.shade400, fontSize: 50),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  OpButton('AC'),
+                  OpButton('C'),
+                  Numbutton('<', Colors.grey.shade300, Colors.grey.shade900),
+                  Numbutton('%', Colors.grey.shade300, Colors.grey.shade900),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Numbutton('7'),
+                  Numbutton('8'),
+                  Numbutton('9'),
+                  Numbutton(
+                    '*',
+                    Colors.grey.shade300,
+                    Colors.grey.shade900,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    OpButton('AC'),
-                    OpButton('C'),
-                    Numbutton('<', Colors.grey.shade300, Colors.grey.shade900),
-                    Numbutton('%', Colors.grey.shade300, Colors.grey.shade900),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
+                    Numbutton('4'),
+                    Numbutton('5'),
+                    Numbutton('6'),
+                    Numbutton('+', Colors.grey.shade300, Colors.grey.shade900),
+                  ]),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Numbutton('7'),
-                    Numbutton('8'),
-                    Numbutton('9'),
-                    Numbutton(
-                      '*',
-                      Colors.grey.shade300,
-                      Colors.grey.shade900,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Numbutton('4'),
-                      Numbutton('5'),
-                      Numbutton('6'),
-                      Numbutton(
-                          '+', Colors.grey.shade300, Colors.grey.shade900),
-                    ]),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Numbutton('1'),
-                      Numbutton('2'),
-                      Numbutton('3'),
-                      Numbutton(
-                          '-', Colors.grey.shade300, Colors.grey.shade900),
-                    ]),
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Numbutton('00'),
-                      Numbutton('0'),
-                      Container(
-                        decoration: BoxDecoration(boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.shade900,
-                            offset: Offset(2, 2),
-                            blurRadius: 15,
-                            spreadRadius: 1,
-                          ),
-                          BoxShadow(
-                            color: Colors.grey.shade900,
-                            offset: Offset(2, 2),
-                            blurRadius: 15,
-                            spreadRadius: 1,
-                          ),
-                        ], shape: BoxShape.circle),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => development()));
-                          },
-                          child: Text(
-                            '.',
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            shape: CircleBorder(),
-                            primary: Colors.black,
-                            fixedSize: Size(40, 40),
-                          ),
+                    Numbutton('1'),
+                    Numbutton('2'),
+                    Numbutton('3'),
+                    Numbutton('-', Colors.grey.shade300, Colors.grey.shade900),
+                  ]),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Numbutton('00'),
+                    Numbutton('0'),
+                    Container(
+                      decoration: BoxDecoration(boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade900,
+                          offset: Offset(2, 2),
+                          blurRadius: 15,
+                          spreadRadius: 1,
+                        ),
+                        BoxShadow(
+                          color: Colors.grey.shade900,
+                          offset: Offset(2, 2),
+                          blurRadius: 15,
+                          spreadRadius: 1,
+                        ),
+                      ], shape: BoxShape.circle),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => development()));
+                        },
+                        child: Text(
+                          '.',
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          primary: Colors.black,
+                          fixedSize: Size(40, 40),
                         ),
                       ),
-                      Numbutton(
-                          '/', Colors.grey.shade300, Colors.grey.shade900),
-                    ])
-              ],
-            )
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            _Calc('=');
-          },
-          child: Icon(Icons.arrow_forward_ios_rounded),
-          backgroundColor: Colors.grey.shade900,
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+                    ),
+                    Numbutton('/', Colors.grey.shade300, Colors.grey.shade900),
+                  ])
+            ],
+          )
+        ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _Calc('=');
+        },
+        child: Icon(Icons.arrow_forward_ios_rounded),
+        backgroundColor: Colors.grey.shade900,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
@@ -284,9 +277,42 @@ class development extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('development'),
-      ),
-    );
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          title: Text('Under Development'),
+          backgroundColor: Colors.grey.shade900,
+          centerTitle: true,
+        ),
+        body: Column(
+          children: <Widget>[
+            Image.asset(
+              'assests/images/underdevelopment.jpg',
+              fit: BoxFit.fitHeight,
+            ),
+            SizedBox(
+              height: 100,
+            ),
+            Center(
+              child: Text(
+                'The update will soon be released.',
+                style: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 30,
+                    fontWeight: FontWeight.w300),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            SizedBox(height: 20),
+            Center(
+              child: Text(
+                'Stay tuned!',
+                style: TextStyle(
+                    color: Colors.grey.shade600,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400),
+              ),
+            )
+          ],
+        ));
   }
 }
